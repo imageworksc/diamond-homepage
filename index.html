@@ -516,24 +516,16 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 .site-header.is-scrolled .brand img { width: 11.5rem; }
 @media (max-width: 30rem) { .site-header.is-scrolled .brand img { width: 9.5rem; } }
 .nav__cta svg { width: 16px; height: 16px; }
-.nav__cta:hover svg, .footer__actions .btn--primary:hover svg { transform: translateX(3px); }
+.nav__cta:hover svg { transform: translateX(3px); }
 /* Dropdowns as cards */
 .nav__menu { min-width: 17.5rem; padding: var(--space-3); border: 1px solid var(--rule); box-shadow: var(--shadow-lg); top: calc(100% + 2px); }
-.nav__menu-head { padding: var(--space-2) var(--space-3) var(--space-3); margin-bottom: var(--space-2); border-bottom: 1px solid var(--rule); font: 650 .75rem/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
 .nav__menu a { position: relative; padding: 0 var(--space-3); min-height: 42px; font-weight: 520; }
 .nav__menu a::after { content: "\2192"; margin-left: auto; color: var(--feature); opacity: 0; transform: translateX(-6px); transition: opacity .2s ease, transform .2s var(--ease-out); }
 .nav__menu a:hover { padding-left: calc(var(--space-3) + 4px); background: var(--tint); }
 .nav__menu a:hover::after { opacity: 1; transform: none; }
-.nav__menu-all { margin-top: var(--space-2); padding-top: var(--space-2); border-top: 1px solid var(--rule); }
-.nav__menu-all a { font-weight: 650; text-decoration: underline; text-decoration-color: var(--green); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
 /* ===== Footer v4 ===== */
 .site-footer { position: relative; background: var(--charcoal); }
-.site-footer .footer__cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-6) var(--space-10); padding-block: clamp(var(--space-12), 5vw, var(--space-16)); border-bottom: 1px solid rgba(255,255,255,.12); }
-.footer__cta .eyebrow { color: var(--green); margin-bottom: var(--space-3); }
-.site-footer .footer__headline { font: 740 clamp(1.75rem, 1.3rem + 1.5vw, 2.5rem)/1.15 var(--font-head); font-stretch: 104%; letter-spacing: -.015em; color: var(--white); max-width: 22ch; text-wrap: balance; }
-.footer__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); }
-.site-footer .footer__actions .btn { width: auto; margin: 0; }
 .site-footer .footer__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.2fr); gap: var(--space-10); padding-block: var(--space-16); }
 .footer__logo { display: inline-block; background: var(--white); padding: var(--space-3) var(--space-5) var(--space-3) var(--space-4); margin-bottom: var(--space-6); transition: transform .3s var(--ease-out); }
 .footer__logo:hover { transform: translateY(-3px); }
@@ -558,7 +550,6 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 @media (max-width: 64rem) { .site-footer .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 37.5rem) {
   .site-footer .footer__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); padding-block: var(--space-12); }
-  .footer__actions, .site-footer .footer__actions .btn { width: 100%; }
   .legal__links { flex-direction: column; align-items: flex-start; gap: 0; }
 }
 
@@ -595,23 +586,19 @@ html body .reveal.is-in { opacity: 1; transform: none; }
         <li class="nav__item">
           <a class="nav__link" href="#" aria-haspopup="true">Maintenance Services <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></a>
           <ul class="nav__menu">
-            <li class="nav__menu-head">Maintenance Services</li>
             <li><a href="#">Restoration</a></li>
             <li><a href="#">Waterproofing &amp; Caulking</a></li>
             <li><a href="#">Bird Control</a></li>
-            <li class="nav__menu-all"><a href="#">All maintenance services</a></li>
           </ul>
         </li>
         <li class="nav__item">
           <a class="nav__link" href="#" aria-haspopup="true">Commercial Cleaning <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></a>
           <ul class="nav__menu">
-            <li class="nav__menu-head">Commercial Cleaning</li>
             <li><a href="#">Janitorial Services</a></li>
             <li><a href="#">Green Cleaning</a></li>
             <li><a href="#">Window Cleaning</a></li>
             <li><a href="#">Power Washing</a></li>
             <li><a href="#">Soft Washing</a></li>
-            <li class="nav__menu-all"><a href="#">All commercial cleaning</a></li>
           </ul>
         </li>
         <li class="nav__item"><a class="nav__link" href="#">Areas Served</a></li>
@@ -834,16 +821,6 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 </main>
 
 <footer class="site-footer">
-  <div class="wrap footer__cta">
-    <div>
-      <p class="eyebrow">Diamond Building Services</p>
-      <p class="footer__headline">One call for the inside and the outside of your building.</p>
-    </div>
-    <div class="footer__actions">
-      <a class="btn btn--primary" href="#contact">Contact us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn--outline-light" href="tel:+13012701572"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>(301) 270-1572</a>
-    </div>
-  </div>
   <div class="wrap footer__grid">
     <section class="footer__brand" aria-labelledby="f-about">
       <a class="footer__logo cut" href="#" aria-label="Diamond Building Services, Inc. home"><img src="images/logo.png" alt="Diamond Building Services, Inc." width="610" height="190" loading="lazy"></a>
