@@ -421,7 +421,93 @@ p, dd, li { text-wrap: pretty; }
 .faq details[open] summary { color: var(--ink); }
 .site-footer .wrap { row-gap: var(--space-8); }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } .btn:active, .photo-slot:hover img, .svc:hover img { transform: none; } }
+/* ===== Motion v3 ===== */
+:root { --ease-out: cubic-bezier(.2,.7,.2,1); }
+
+/* Hero: full viewport, smaller headline, trust strip pinned to the bottom */
+.hero { min-height: clamp(34rem, calc(100svh - var(--hdr, 8.5rem)), 64rem); display: flex; flex-direction: column; }
+.hero > .wrap { flex: 1; display: flex; align-items: center; }
+.hero__content { max-width: 64rem; }
+.hero h1 { font-size: clamp(2.375rem, 1.35rem + 3.1vw, 4.25rem); line-height: 1.04; max-width: 24ch; }
+.hero__trust { flex: none; }
+.hero .hero__trust ul.wrap { padding-block: var(--space-5); }
+
+@keyframes heroIn { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes heroZoom { from { transform: scale(1.1); } to { transform: scale(1); } }
+@keyframes shimmer { to { background-position: -200% center; } }
+@keyframes drawLine { to { transform: scaleX(1); } }
+.hero__photo img { animation: heroZoom 2.6s var(--ease-out) both; }
+.hero__content > * { animation: heroIn .9s var(--ease-out) both; }
+.hero__content > :nth-child(2) { animation-delay: .15s; }
+.hero__content > :nth-child(3) { animation-delay: .3s; }
+.hero__trust li { animation: heroIn .8s var(--ease-out) both; }
+.hero__trust li:nth-child(1) { animation-delay: .45s; } .hero__trust li:nth-child(2) { animation-delay: .55s; }
+.hero__trust li:nth-child(3) { animation-delay: .65s; } .hero__trust li:nth-child(4) { animation-delay: .75s; }
+
+/* Green words: moving highlight + an underline that draws in */
+.hero h1 em { position: relative; display: inline-block; white-space: nowrap; text-shadow: none;
+  background: linear-gradient(100deg, #89b935 0%, #89b935 35%, #d8f0a8 50%, #89b935 65%, #89b935 100%);
+  background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  animation: shimmer 3.8s linear 1.2s infinite; }
+.hero h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: -.04em; height: .07em; background: var(--green); transform: scaleX(0); transform-origin: left; animation: drawLine .9s var(--ease-out) .9s forwards; }
+.hero__trust li svg { transition: transform .25s var(--ease-out); }
+.hero__trust li:hover svg { transform: scale(1.15) rotate(-8deg); }
+
+/* Scroll reveal (class added by JS, so content shows without JS) */
+html body .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s var(--ease-out); }
+html body .reveal.is-in { opacity: 1; transform: none; }
+
+/* Nav: sliding underline + dropdown that eases in */
+.nav__link { position: relative; }
+.nav__link:hover, .nav__item:focus-within > .nav__link { border-bottom-color: transparent; }
+.nav__link::after { content: ""; position: absolute; left: .75rem; right: .75rem; bottom: 4px; height: 3px; background: var(--green); transform: scaleX(0); transform-origin: left; transition: transform .25s var(--ease-out); }
+.nav__link:hover::after, .nav__item:focus-within > .nav__link::after { transform: scaleX(1); }
+.nav__menu { transform: translateY(8px); transition: opacity .18s ease, visibility .18s, transform .22s var(--ease-out); }
+.nav__item:hover .nav__menu, .nav__item:focus-within .nav__menu { transform: none; }
+.nav__menu a { transition: background-color .15s ease, padding-left .2s var(--ease-out); }
+.nav__menu a:hover { padding-left: calc(var(--space-5) + 6px); }
+.brand img { transition: transform .3s var(--ease-out); }
+.brand:hover img { transform: scale(1.03); }
+
+/* Buttons: lift + light sweep */
+.btn { position: relative; overflow: hidden; }
+.btn:hover { transform: translateY(-2px); }
+.btn--primary::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent); transform: skewX(-20deg); transition: left .6s var(--ease-out); pointer-events: none; }
+.btn--primary:hover::after { left: 120%; }
+.btn svg { transition: transform .25s var(--ease-out); }
+.btn:hover svg { transform: rotate(-12deg) scale(1.1); }
+
+/* Cards and rows */
+.svc-group { transition: transform .3s var(--ease-out), box-shadow .3s ease; }
+.svc-group:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.svc-group .svc { transition: padding-left .25s var(--ease-out); }
+.svc-group .svc:hover { padding-left: 6px; }
+.entity__facts div { transition: transform .25s var(--ease-out); }
+.entity__facts div:hover { transform: translateX(6px); }
+.creds div { transition: transform .25s var(--ease-out), background-color .2s ease, border-color .2s ease; }
+.creds div:hover { transform: translateY(-4px); background: rgba(255,255,255,.09); border-color: rgba(137,185,53,.6); }
+.quote, .contact__card { transition: transform .3s var(--ease-out), box-shadow .3s ease; }
+.quote:hover, .contact__card:hover { transform: translateY(-4px); }
+.quote:hover { box-shadow: var(--shadow-md); }
+.svc-help { transition: transform .3s var(--ease-out); }
+.svc-help:hover { transform: translateY(-3px); }
+
+/* FAQ: shift on hover, answer fades in */
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.faq summary { transition: padding-left .2s var(--ease-out), color .15s ease; }
+.faq summary:hover { padding-left: 6px; }
+.faq details[open] p { animation: fadeDown .35s var(--ease-out); }
+
+/* Footer links */
+.site-footer li a { transition: transform .2s var(--ease-out), color .15s ease; }
+.site-footer li a:hover { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; }
+  .reveal { opacity: 1; transform: none; }
+  .btn:hover, .btn:active, .photo-slot:hover img, .svc:hover img, .svc-group:hover, .creds div:hover, .quote:hover, .contact__card:hover, .svc-help:hover { transform: none; }
+}
 </style>
 </head>
 <body>
@@ -729,6 +815,27 @@ p, dd, li { text-wrap: pretty; }
   nav.querySelectorAll('details').forEach(function(d){ d.addEventListener('toggle',function(){ if(d.open) nav.querySelectorAll('details').forEach(function(o){ if(o!==d) o.open=false; }); }); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape' && nav.classList.contains('open')){ set(false); btn.focus(); } });
   window.addEventListener('resize',function(){ if(window.innerWidth>1200 && nav.classList.contains('open')) set(false); else if(nav.classList.contains('open')) place(); });
+})();
+// Hero fills the screen below the utility bar + header
+(function(){
+  var u=document.querySelector('.utility'), h=document.querySelector('.site-header');
+  function fit(){ document.documentElement.style.setProperty('--hdr', ((u?u.offsetHeight:0)+(h?h.offsetHeight:0))+'px'); }
+  fit(); window.addEventListener('resize', fit);
+})();
+// Scroll reveal with a small stagger between siblings
+(function(){
+  if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var sel='.entity__main, .entity__facts, .services__head, .svc-group, .svc-help, .safety__grid > *, .creds > div, .proof__grid > *, .contact__grid > *, .faq__aside, .faq__list details, .site-footer .wrap > *';
+  var els=document.querySelectorAll(sel);
+  els.forEach(function(el){
+    var sibs=Array.prototype.filter.call(el.parentNode.children,function(c){ return c.matches(sel); });
+    el.style.transitionDelay=Math.min(sibs.indexOf(el),5)*90+'ms';
+    el.classList.add('reveal');
+  });
+  var io=new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } }); },{rootMargin:'0px 0px -8% 0px', threshold:.08});
+  els.forEach(function(el){ io.observe(el); });
+  // once revealed, drop the reveal classes so each element's own hover transitions take over
+  document.addEventListener('transitionend',function(e){ var t=e.target; if(e.propertyName==='opacity' && t.classList && t.classList.contains('is-in')){ t.classList.remove('reveal','is-in'); t.style.transitionDelay=''; } });
 })();
 </script>
 <!-- ===== REVIEW LAYER: delete everything below (and .ph/.rn CSS) before handoff ===== -->
