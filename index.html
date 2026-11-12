@@ -264,7 +264,10 @@ a:hover { text-decoration-color: var(--ink); }
 
 /* FAQ — always last */
 .faq { padding-block: var(--band-y); background: var(--white); }
-.faq__grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--space-12); align-items: start; }
+.faq__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-10); max-width: 52rem; margin-inline: auto; }
+.faq__aside { text-align: center; }
+.faq__aside h2 { margin-inline: auto; max-width: 22ch; }
+.faq__aside p { margin-inline: auto; }
 .faq h2 { font-size: var(--text-h2); }
 .faq__aside p { margin-top: var(--space-4); color: var(--ink-soft); }
 .faq__list { border-top: 2px solid var(--ink); }
@@ -275,7 +278,7 @@ a:hover { text-decoration-color: var(--ink); }
 .faq summary:hover::after { color: var(--feature-deep); }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq details p { padding-bottom: var(--space-6); color: var(--ink); }
-@media (max-width: 56rem) { .faq__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); } }
+@media (max-width: 56rem) { .faq__grid { gap: var(--space-8); } }
 
 /* Footer */
 .site-footer { background: var(--charcoal); color: #ececec; }
@@ -432,9 +435,6 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 .brand img { transition: transform .3s var(--ease-out); }
 .brand:hover img { transform: scale(1.03); }
 
-/* Cool, low-saturation grade so stock photos don't pull in warm reds and yellows */
-.svc-group__media img, .safety .photo-slot img { filter: grayscale(.9) contrast(1.05); }
-
 /* Buttons share the brand's cut corner */
 .btn { --btn-cut: .875rem; --btn-line: transparent; clip-path: polygon(0 0, calc(100% - var(--btn-cut)) 0, 100% var(--btn-cut), 100% 100%, 0 100%); }
 .btn::before { content: ""; position: absolute; top: 0; right: 0; width: var(--btn-cut); height: var(--btn-cut); pointer-events: none;
@@ -499,7 +499,7 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 .nav__menu a:hover::after { opacity: 1; transform: none; }
 
 /* ===== Footer v4 ===== */
-.site-footer { position: relative; background: var(--charcoal); }
+.site-footer { position: relative; background: var(--charcoal); overflow: clip; }
 .site-footer .footer__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.2fr); gap: var(--space-10); padding-block: var(--space-16); }
 .footer__logo { display: inline-block; margin-bottom: var(--space-6); transition: transform .3s var(--ease-out), opacity .3s; }
 .footer__logo:hover { opacity: .85; }
@@ -554,7 +554,7 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#" aria-label="Diamond Building Services, Inc. home"><img src="images/logo.png" alt="Diamond Building Services, Inc." width="610" height="190"></a>
+    <a class="brand" href="#" aria-label="Diamond Building Services, Inc. home"><img src="images/logo-transparent.png" alt="Diamond Building Services, Inc." width="610" height="190"></a>
     <nav class="nav" aria-label="Main">
       <ul class="nav__list">
         <li class="nav__item"><a class="nav__link" href="#">About Us</a></li>
