@@ -297,8 +297,8 @@ a:hover { text-decoration-color: var(--ink); }
 @media (max-width: 37.5rem) { .site-footer .wrap { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); padding-block: var(--space-12); } .legal .wrap { flex-direction: column; align-items: flex-start; } }
 
 /* Placeholder content (replace before launch) */
-.ph { color: #b23a0c; text-decoration: underline dotted #ea580c; text-decoration-thickness: 2px; text-underline-offset: .22em; }
-.on-dark .ph { color: #ffe1c4; text-decoration-color: #ffb27a; }
+.ph { color: inherit; text-decoration: underline dotted #9aa4b0; text-decoration-thickness: 2px; text-underline-offset: .22em; }
+.on-dark .ph { text-decoration-color: rgba(255,255,255,.45); }
 
 /* ===== Palette options ===== */
 [data-palette="teal"] { --feature: #1d6a6e; --feature-deep: #165457; --on-feature: #f1f8f7; --on-feature-soft: #cfe6e4;
@@ -431,6 +431,9 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 .nav__menu a:hover { padding-left: calc(var(--space-5) + 6px); }
 .brand img { transition: transform .3s var(--ease-out); }
 .brand:hover img { transform: scale(1.03); }
+
+/* Cool, low-saturation grade so stock photos don't pull in warm reds and yellows */
+.svc-group__media img, .safety .photo-slot img { filter: grayscale(.9) contrast(1.05); }
 
 /* Buttons share the brand's cut corner */
 .btn { --btn-cut: .875rem; --btn-line: transparent; clip-path: polygon(0 0, calc(100% - var(--btn-cut)) 0, 100% var(--btn-cut), 100% 100%, 0 100%); }
@@ -726,7 +729,7 @@ html body .reveal.is-in { opacity: 1; transform: none; }
         
       </div>
       <figure class="photo-slot photo-slot--light cut">
-        <img src="images/project-building.jpg" alt="Exterior of a multi-story residential building" width="1000" height="1250" loading="lazy" decoding="async">
+        <img src="images/project-building.jpg" alt="White multi-story building against a blue sky" width="1000" height="1250" loading="lazy" decoding="async">
         <figcaption>[PLACEHOLDER PHOTO] Replace with finished work on a named building. Before/after pair if available.</figcaption>
       </figure>
     </div>
