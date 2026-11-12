@@ -432,6 +432,14 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 .brand img { transition: transform .3s var(--ease-out); }
 .brand:hover img { transform: scale(1.03); }
 
+/* Buttons share the brand's cut corner */
+.btn { --btn-cut: .875rem; --btn-line: transparent; clip-path: polygon(0 0, calc(100% - var(--btn-cut)) 0, 100% var(--btn-cut), 100% 100%, 0 100%); }
+.btn::before { content: ""; position: absolute; top: 0; right: 0; width: var(--btn-cut); height: var(--btn-cut); pointer-events: none;
+  background: linear-gradient(to top right, transparent 50%, var(--btn-line) 50%, var(--btn-line) calc(50% + 3px), transparent calc(50% + 3px)); }
+.btn--outline-light { --btn-line: rgba(255,255,255,.85); }
+.btn--outline-light:hover { --btn-line: var(--white); }
+.btn--outline-dark, .btn--secondary { --btn-line: var(--ink); }
+
 /* Buttons: lift + light sweep */
 .btn { position: relative; overflow: hidden; }
 .btn:hover { transform: translateY(-2px); }
