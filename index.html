@@ -492,7 +492,8 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 /* ===== Footer v4 ===== */
 .site-footer { position: relative; background: var(--charcoal); }
 .site-footer .footer__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.2fr); gap: var(--space-10); padding-block: var(--space-16); }
-.footer__logo { display: inline-block; background: var(--white); padding: var(--space-3) var(--space-5) var(--space-3) var(--space-4); margin-bottom: var(--space-6); transition: transform .3s var(--ease-out); }
+.footer__logo { display: inline-block; margin-bottom: var(--space-6); transition: transform .3s var(--ease-out), opacity .3s; }
+.footer__logo:hover { opacity: .85; }
 .footer__logo:hover { transform: translateY(-3px); }
 .footer__logo img { width: 11.5rem; height: auto; }
 .footer__brand p { max-width: 38ch; color: #cfd0cc; }
@@ -788,7 +789,7 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 <footer class="site-footer">
   <div class="wrap footer__grid">
     <section class="footer__brand" aria-labelledby="f-about">
-      <a class="footer__logo cut" href="#" aria-label="Diamond Building Services, Inc. home"><img src="images/logo.png" alt="Diamond Building Services, Inc." width="610" height="190" loading="lazy"></a>
+      <a class="footer__logo" href="#" aria-label="Diamond Building Services, Inc. home"><img src="images/logo-light.png" alt="Diamond Building Services, Inc." width="610" height="190" loading="lazy"></a>
       <h2 id="f-about">About Us</h2>
       <p>Diamond Building Services specializes in commercial and residential maintenance, in addition to complete janitorial services. No matter the size of the building or the scope of the project, we stand behind our efficiency, professionalism, value, and customer care.</p>
     </section>
