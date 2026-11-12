@@ -292,7 +292,7 @@ a:hover { text-decoration-color: var(--ink); }
 .site-footer address a { color: var(--white); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; margin-top: var(--space-2); }
 .site-footer address a:hover { color: var(--green); }
 .legal { background: var(--charcoal); color: #c9ced4; font-size: var(--text-sm); }
-.legal .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-2) var(--space-8); padding-block: var(--space-4); }
+.legal .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-2) var(--space-8); padding-block: var(--space-3) var(--space-4); }
 .legal p { max-width: none; }
 .legal a { color: #f1f4f7; text-underline-offset: 3px; display: inline-flex; align-items: center; min-height: 44px; }
 .legal a:hover { color: var(--green); }
@@ -500,7 +500,7 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 
 /* ===== Footer v4 ===== */
 .site-footer { position: relative; background: var(--charcoal); overflow: clip; }
-.site-footer .footer__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.2fr); gap: var(--space-10); padding-block: var(--space-16); }
+.site-footer .footer__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.2fr); gap: var(--space-10); padding-block: var(--space-16) var(--space-8); }
 .footer__logo { display: inline-block; margin-bottom: var(--space-6); transition: transform .3s var(--ease-out), opacity .3s; }
 .footer__logo:hover { opacity: .85; }
 .footer__logo:hover { transform: translateY(-3px); }
@@ -524,7 +524,7 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 .to-top:hover svg { transform: translateY(-3px); }
 @media (max-width: 64rem) { .site-footer .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 37.5rem) {
-  .site-footer .footer__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); padding-block: var(--space-12); }
+  .site-footer .footer__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); padding-block: var(--space-12) var(--space-6); }
   .legal__links { flex-direction: column; align-items: flex-start; gap: 0; }
 }
 
