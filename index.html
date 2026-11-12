@@ -259,7 +259,7 @@ a:hover { text-decoration-color: var(--ink); }
 .contact__card dd a { font-weight: 600; display: inline-flex; align-items: center; min-height: 44px; }
 .btn--secondary { background: var(--white); color: var(--ink); border-color: var(--ink); }
 .btn--secondary:hover { background: var(--ink); color: var(--white); }
-@media (max-width: 56rem) { .contact__grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 68rem) { .contact__grid { grid-template-columns: minmax(0, 1fr); } .contact__card { max-width: 40rem; } }
 @media (max-width: 40rem) { .contact__actions .btn { width: 100%; } .contact__card { padding: var(--space-6); } }
 
 /* FAQ — always last */
@@ -480,8 +480,9 @@ html body .reveal.is-in { opacity: 1; transform: none; }
 .skip { top: 0; transform: translateY(-120%); transition: transform .2s ease; }
 .skip:focus { top: 0; transform: translateY(var(--space-4)); }
 .utility .wrap { justify-content: flex-end; }
-.utility__tag { margin-right: auto; color: #c9cac6; letter-spacing: .01em; }
-@media (max-width: 64rem) { .utility__tag { display: none; } }
+.utility__tag { margin-right: auto; color: #c9ced4; letter-spacing: .01em; }
+@media (max-width: 72rem) { .utility .utility__tag { display: none; } }
+@media (max-width: 40rem) { .utility .addr { display: none; } .utility .wrap { justify-content: center; } }
 .site-header { position: sticky; top: 0; z-index: 45; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px); transition: box-shadow .3s ease, background-color .3s ease, border-color .3s ease; }
 .site-header .wrap { transition: min-height .3s var(--ease-out); }
 .brand img { transition: width .3s var(--ease-out), transform .3s var(--ease-out); }
